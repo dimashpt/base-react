@@ -8,8 +8,20 @@ export default {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    colors: {},
     extend: {},
   },
   darkMode: 'class',
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {},
+        },
+        dark: {
+          colors: {},
+        },
+      },
+    }),
+  ],
 };
