@@ -1,0 +1,19 @@
+.menu-item {
+  @apply flex min-h-[48px] flex-col justify-center;
+
+  & > {
+    a {
+      @apply min-h-[48px];
+
+      &:hover {
+        @apply rounded-lg bg-[#0000000d] dark:bg-[#ffffff0d] dark:text-white;
+      }
+    }
+  }
+
+  &.menu-active > {
+    a {
+      @apply rounded-lg bg-[#0000001a] dark:bg-[#ffffff1a] dark:text-white;
+    }
+  }
+}

@@ -1,19 +1,18 @@
-import { useNavigate } from '@/router';
-import { Button } from '@nextui-org/react';
-import { useTranslation } from 'react-i18next';
+import { Header, Sidebar } from '@/components';
+import React, { useState } from 'react';
 
-const MainPage: React.FC = () => {
-  const navigate = useNavigate();
-  const [t] = useTranslation('main_page');
+const PortalLayout: React.FC = () => {
+  const [showSidebar, setShowSidebar] = useState<boolean>(true);
 
   return (
-    <main className="flex w-full h-screen justify-center items-center flex-col">
-      <h1>{t('title')}</h1>
-      <Button color="primary" onClick={() => navigate('/home')}>
-        To Home
-      </Button>
-    </main>
+    <div className="flex min-w-0 flex-auto">
+      <Sidebar show={showSidebar} />
+      <div className="relative z-10 flex min-h-full min-w-0 flex-auto flex-col">
+        <Header toggleSidebar={() => setShowSidebar(!showSidebar)} />
+        <main id="content">Hello</main>
+      </div>
+    </div>
   );
 };
 
-export default MainPage;
+export default PortalLayout;

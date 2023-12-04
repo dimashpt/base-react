@@ -7,7 +7,6 @@ import '@/utils/lib/i18next';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      keepPreviousData: true,
       retry: 1,
       retryDelay: 2000,
     },
