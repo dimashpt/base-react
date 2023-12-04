@@ -11,6 +11,7 @@ import {
 } from '@nextui-org/react';
 import { ThemeToggle } from '@/components';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { useMainStore } from '@/store';
 
 type HeaderProps = {
   toggleSidebar: () => void;
@@ -19,6 +20,8 @@ type HeaderProps = {
 const HeaderComponent: React.FC<HeaderProps> = ({
   toggleSidebar,
 }: HeaderProps) => {
+  const { user } = useMainStore();
+
   return (
     <header className="header">
       <Button
@@ -37,8 +40,8 @@ const HeaderComponent: React.FC<HeaderProps> = ({
               as="button"
               avatarProps={{ src: '' }}
               className="transition-transform"
-              description={'dimas@kc.app'}
-              name={'Dimas P'}
+              description={user?.email ?? ''}
+              name={user?.name ?? ''}
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="User Actions" variant="flat">

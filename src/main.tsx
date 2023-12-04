@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Routes } from '@generouted/react-router';
+import '@/store';
 import '@/assets/styles/globals.scss';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
