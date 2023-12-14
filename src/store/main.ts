@@ -11,13 +11,15 @@ type AuthenticatedUser = {
 };
 
 // Represents the state of the main store.
-interface MainState {
+export interface MainState {
+  theme: 'light' | 'dark' | 'system';
   user: AuthenticatedUser;
   sessionExpires: number;
 }
 
 // Represents the actions that can be performed on the main store.
 interface MainAction {
+  setTheme: (theme: MainState['theme']) => void;
   setUser: (user: AuthenticatedUser) => void;
   setSessionExpires: (sessionExpires: number) => void;
   logout: () => void;
@@ -38,9 +40,11 @@ const initialUser: AuthenticatedUser = {
  * @returns The initial state and actions of the main store.
  */
 const stateCreator: StateCreator<MainStore> = (set) => ({
+  theme: 'light',
   lastResendOtp: 1,
   sessionExpires: 0,
   user: initialUser,
+  setTheme: (theme) => set((_) => ({ theme })),
   setUser: (user) => set((_) => ({ user })),
   setSessionExpires: (sessionExpires) => set((_) => ({ sessionExpires })),
   logout: () => set((_) => ({ user: initialUser })),
